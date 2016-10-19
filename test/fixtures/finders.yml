@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pets: one
+  alias: MyString
+  description: MyText
+  followers: one
+
+two:
+  pets: two
+  alias: MyString
+  description: MyText
+  followers: two

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pets: one
+  alias: MyString
+  decription: MyText
+
+two:
+  pets: two
+  alias: MyString
+  decription: MyText
