@@ -7,7 +7,7 @@ class PetFinderBack::Application
 
       resource '/cors',
         headers: :any,
-        methods: [:post],
+        methods: [:post, :get],
         credentials: true,
         max_age: 0
 
