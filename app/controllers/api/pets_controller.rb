@@ -48,7 +48,7 @@ class Api::PetsController < ApplicationController
     private
 
         def pet_params
-          params.require(:pet).permit(:name, :species)
+          params.require(:pet).permit(:name, :species, :owner)
         end
 
         def render_pet(status:  200)
