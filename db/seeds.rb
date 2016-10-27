@@ -23,11 +23,11 @@ owner4 = Owner.create(user: user4)
 
 Pet.delete_all
 
-Pet.create(name: "Roro", species: "Water-agaam", lastSeen: { "lat": "52.321178", "lng": "4.837350" }, status: "missing", owner: owner1)
+Pet.create(name: "Roro", species: "Water-agaam", lastSeen: { "lat": 52.321178, "lng": 4.837350 }, status: "missing", owner: owner1)
 pet1 = Pet.create( { name: "Hubba", species: "Tapir", status:"seen", owner: owner1 } )
 pets = Pet.create([
-    { name: "Koala Jaap", species: "Koala", owner: lisa, lastSeen: { "lat": "52.3435125", "lng": "4.8820532"}, status: "seen" },
-    {  "name": "Kip Jacqueline", "species": "Kip", owner: lisa, "lastSeen": { "lat": "52.321178", "lng": "4.837386"}, "status": "missing" },
-    {  "name": "konijn Pluis", "species": "konijn", owner: owner4, "lastSeen": { "lat": "52.339947", "lng": "4.880144"}, "status": "missing" },
-    { "name": "kat Barrabas", "species": "kat", owner: owner3, "lastSeen": { "lat": "52.347849", "lng": "4.905719"}, "status": "found" }
+    { name: "Koala Jaap", species: "Koala", owner: lisa, lastSeen: { lat: 52.3435125, lng: 4.8820532}, status: "seen" },
+    {  "name": "Kip Jacqueline", "species": "Kip", owner: lisa, "lastSeen": { lat: 52.321178, lng: 4.837386}, "status": "missing" },
+    {  "name": "konijn Pluis", "species": "konijn", owner: owner4, "lastSeen": { "lat": 52.339947, "lng": 4.880144}, "status": "missing" },
+    { "name": "kat Barrabas", "species": "kat", owner: owner3, "lastSeen": { "lat": 52.347849, "lng": 4.905719}, "status": "found" }
 ])
