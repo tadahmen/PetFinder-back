@@ -1,23 +1,19 @@
 class Api::PetsController < ApplicationController
-    before_action :load_pet, except: [:index, :create]
+    before_action :load_pet, except: [:index, :create, :owners_pets]
 
     def index
         @pets = Pet.all
         render status: 200, json: { pets: @pets }.to_json
     end
 
-    # def owners_pets
-    #     @owner = Owner.where(user_id: session[:current_user_id])
-    #     @pets = Pet.where(owner: @owner)
-    #
-    #     render status: 200, json: {
-    #         pets: @pets,
-    #         session: session,
-    #         session_id: session.id,
-    #         session_id_from_request: @session_id,
-    #         current_user_id: @current_user_id
-    #     }.to_json
-    # end
+    def owners_pets
+        @owner = Owner.where(user_id: session[:current_user_id])
+        @pets = Pet.where(owner: @owner)
+
+        render status: 200, json: {
+            pets: @pets,
+        }.to_json
+    end
 
     def show
         render_pet
