@@ -3,7 +3,9 @@ class Api::PetsController < ApplicationController
 
     def index
         @pets = Pet.all
-        render status: 200, json: { pets: @pets }.to_json
+        render status: 200, json: {
+            pets: @pets.as_json(except: :owner_id)
+        }
     end
 
     def owners_pets
@@ -11,8 +13,8 @@ class Api::PetsController < ApplicationController
         @pets = Pet.where(owner: @owner)
 
         render status: 200, json: {
-            pets: @pets,
-        }.to_json
+            pets: @pets.as_json(except: :owner_id),
+        }
     end
 
     def show
