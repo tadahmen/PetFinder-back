@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018184925) do
+ActiveRecord::Schema.define(version: 20161020202256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,11 +22,20 @@ ActiveRecord::Schema.define(version: 20161018184925) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "finders_pets", id: false, force: :cascade do |t|
+    t.integer "pet_id"
+    t.integer "finder_id"
+    t.index ["finder_id"], name: "index_finders_pets_on_finder_id", using: :btree
+    t.index ["pet_id"], name: "index_finders_pets_on_pet_id", using: :btree
+  end
+
   create_table "owners", force: :cascade do |t|
     t.string   "alias"
     t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_owners_on_user_id", using: :btree
   end
 
   create_table "pets", force: :cascade do |t|
@@ -44,5 +53,12 @@ ActiveRecord::Schema.define(version: 20161018184925) do
     t.index ["owner_id"], name: "index_pets_on_owner_id", using: :btree
   end
 
-  add_foreign_key "pets", "owners"
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
