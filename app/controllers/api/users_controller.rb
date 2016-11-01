@@ -9,18 +9,14 @@ class Api::UsersController < ApplicationController
             if (user[:username] == @username) && (user[:password] == @password)
                 session[:current_user_id] = user[:id]
                 render status: 200, json: {
-                    login: true,
-                    session_id: session.id    #voor testen session
+                    login: true
                 }.to_json
                 return
             end
         end
 
         render status: 200, json: {
-            login: false,
-            user_id: session[:current_user_id],
-            username: @username,
-            password: @password
+            login: false
         }.to_json
     end
 

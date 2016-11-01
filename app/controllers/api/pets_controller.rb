@@ -9,7 +9,7 @@ class Api::PetsController < ApplicationController
     end
 
     def owners_pets
-        @owner = Owner.where(user_id: session[:current_user_id])
+        @owner = Owner.find_by(user_id: session[:current_user_id])
         @pets = Pet.where(owner: @owner)
 
         render status: 200, json: {
@@ -22,7 +22,10 @@ class Api::PetsController < ApplicationController
     end
 
     def create
-      @pet = Pet.new(pet_params)
+      @pet = Pet.new
+      @pet.name = pet_params[:name]
+      @pet.species = pet_params[:species]
+      @pet.owner = Owner.find_by(user_id: session[:current_user_id])
 
       if @pet.save
         render_pet status: :created
@@ -51,7 +54,7 @@ class Api::PetsController < ApplicationController
     private
 
         def pet_params
-          params.require(:pet).permit(:name, :species, :owner)
+          params.require(:pet).permit(:name, :species)
         end
 
         def render_pet(status:  200)
