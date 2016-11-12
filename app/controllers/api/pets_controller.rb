@@ -18,7 +18,7 @@ class Api::PetsController < ApplicationController
     end
 
     def show
-        render_pet
+        render_pet#(except: :owner_id)
     end
 
     def create
@@ -46,7 +46,7 @@ class Api::PetsController < ApplicationController
       if @pet.destroy
         head :ok
       else
-        render_errors "Could not destroy this pet, sorry"
+        render_errors "Could not destroy this lovely pet, sorry"
       end
     end
 
@@ -54,7 +54,7 @@ class Api::PetsController < ApplicationController
     private
 
         def pet_params
-          params.require(:pet).permit(:name, :species)
+          params.require(:pet).permit(:name, :species, :description, :reward, :image, :status)
         end
 
         def render_pet(status:  200)
